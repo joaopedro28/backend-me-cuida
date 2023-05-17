@@ -1,0 +1,110 @@
+{% extends "appointment_list.html" %}
+
+{% block back %}href='{% url "list_appointment" %}'{% endblock back %}
+
+{% block appointment %}
+    Consulta {{ object.date }}<i class="material-icons"><a href='{% url "update_appointment" object.slug %}'>settings</a></i></h3>
+    Paciente: {{ object.patient }}<br>
+    Profissional da Saúde: {{ object.health }}<br>
+    <b>Avaliação</b> (Média {{ object.mean }}):<br>
+    <i class="material-icons active">star</i>
+    {% if object.quantitative0 >= 2 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative0 >= 3 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative0 >= 4 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative0 >= 5 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}Refeições<br>
+
+    <i class="material-icons active">star</i>
+    {% if object.quantitative1 >= 2 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative1 >= 3 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative1 >= 4 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative1 >= 5 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}Atividades Físicas<br>
+
+    <i class="material-icons active">star</i>
+    {% if object.quantitative2 >= 2 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative2 >= 3 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative2 >= 4 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative2 >= 5 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}Glicemia<br>
+
+    <i class="material-icons active">star</i>
+    {% if object.quantitative3 >= 2 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative3 >= 3 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative3 >= 4 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative3 >= 5 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}Pressão<br>
+
+    <i class="material-icons active">star</i>
+    {% if object.quantitative4 >= 2 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative4 >= 3 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative4 >= 4 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}{% if object.quantitative4 >= 5 %}
+    <i class="material-icons active">star</i>
+    {% else %}
+    <i class="material-icons inactive">star</i>
+    {% endif %}Medicamentos<br>
+    
+
+    <h2>Atividades</h2>
+    {% for activity in activities %}
+        ({{ activity.date }}){{ activity.get_activitytype_display }}{% if activity.description %} - {{ activity.description }}{% endif %}<br>
+    {% endfor %}
+{% endblock appointment %}

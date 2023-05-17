@@ -1,0 +1,23 @@
+{% load static %}
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        a{
+            text-decoration:none;
+        }
+        .active{
+            color: rgba(230,210,0,1)
+        }
+        .inactive{
+            color: rgba(150,150,150,1)
+        }
+    </style>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <title>MeCuida</title>
+</head>
+<body class="bg-primary" style="--bs-primary-rgb: 236,250,255;">
+    {% block layout %}
+    {% endblock layout %}
+</body>

@@ -1,0 +1,13 @@
+{% extends "patient_list.html" %}
+
+{% block back %}href='{% url "list_patient" %}'{% endblock back %}
+
+{% block patient %}
+    Registrar Paciente </h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock patient %}

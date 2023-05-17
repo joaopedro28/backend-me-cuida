@@ -1,0 +1,15 @@
+{% extends "appointment_list.html" %}
+
+{% block back %}href='{% url "list_appointment" %}'{% endblock back %}
+
+{% block appointment %}
+    Registrar Consulta</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.health.as_hidden }}
+        {{ form.as_p }}
+        <br>
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock appointment %}
+

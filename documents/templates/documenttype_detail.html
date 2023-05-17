@@ -1,0 +1,8 @@
+{% extends "documenttype_list.html" %}
+
+{% block back %}href='{% url "list_documenttype" %}'{% endblock back %}
+
+{% block document %}
+    {{ object.name }} <i class="material-icons"><a href='{% url "update_documenttype" object.slug %}'>settings</a></i></h3>
+    {{ object.description }}
+{% endblock document %}

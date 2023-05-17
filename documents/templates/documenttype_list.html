@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3><i class="material-icons"><a {% block back %}href='{% url "home" %}'{% endblock back %}>arrow_back</a></i>
+    {% block document %}
+    Tipos de Documento <i class="material-icons"><a href='{% url "create_documenttype" %}'>add</a></i></h3>
+    <ul class="list-group list-group-flush bg-transparent w-25">
+        {% for document in object_list %}
+            <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <a href='{% url "detail_documenttype" document.slug %}'>{{ document.name }}</a>
+                <span class="self-align-end"><i class="material-icons"><a href='{% url "delete_documenttype" document.slug %}'>delete</a></i></span>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endblock document %}
+{% endblock content %}

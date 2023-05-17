@@ -1,0 +1,16 @@
+{% extends "health_list.html" %}
+
+{% block back %}href='{% url "list_health" %}'{% endblock back %}
+
+{% block health %}
+    Registrar Profissional da Saúde </h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        {% if form_2 %}
+            {{ form_2.as_p }}
+        {% endif %}
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock health %}

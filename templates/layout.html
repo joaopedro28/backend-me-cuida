@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block layout %}
+    <nav class="navbar navbar-expand-lg bg-secondary" style="--bs-secondary-rgb: 59,114,255;">
+        <a class="navbar-brand text-secondary" style="--bs-secondary-rgb: 255,255,255;" href='{% url "home" %}'>MeCuida</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if priority >= 3 %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_documenttype' %}">Documentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_health' %}">Profissionais de Saúde</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_appointment' %}">Consultas</a>
+                </li>
+                {% endif %}{% if priority >= 2 %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'list_patient' %}">Pacientes</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'detail' %}">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% if usertype %}
+        {% block content %}
+            <h3>Bem-vindo, {% if profile %}{{ profile.name }}{% else %}{{ user.username }}{% endif %}</h3>
+        {% endblock content %}
+    {% endif %}
+{% endblock layout %}

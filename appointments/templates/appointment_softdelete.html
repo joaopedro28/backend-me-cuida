@@ -1,0 +1,12 @@
+{% extends "appointment_list.html" %}
+
+{% block back %}href='{% url "list_appointment" %}'{% endblock back %}
+
+{% block appointment %}
+    Deletar Consulta</h3>
+    <form method="post">
+        {% csrf_token %}
+        Você tem certeza que quer deletar {{ object.name }}?
+        <button type="submit">Sim</button>
+    </form>
+{% endblock appointment %}

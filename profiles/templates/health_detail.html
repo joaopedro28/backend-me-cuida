@@ -1,0 +1,8 @@
+{% extends "health_list.html" %}
+
+{% block back %}href='{% url "list_health" %}'{% endblock back %}
+
+{% block health %}
+    {{ object.name }} <i class="material-icons"><a href='{% url "update_health" object.slug %}'>settings</a></i></h3>
+    CPF {{ object.cpf }}
+{% endblock health %}

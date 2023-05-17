@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3><i class="material-icons"><a {% block back %}href='{% url "home" %}'{% endblock back %}>arrow_back</a></i>
+    {% block appointment %}
+        Consultas <i class="material-icons"><a href='{% url "create_appointment" %}'>add</a></i></h3>
+        <ul class="list-group list-group-flush bg-transparent w-25">
+            {% for appointment in object_list %}
+                <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                    <a href='{% url "detail_appointment" appointment.slug %}'>{{ appointment.patient }} - {{ appointment.date }} {% if priority >= 3 %}({{ appointment.health }}){% endif %}</a>
+                    <span class="self-align-end"><i class="material-icons"><a href='{% url "delete_appointment" appointment.slug %}'>delete</a></i></span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock appointment %}
+{% endblock content %}

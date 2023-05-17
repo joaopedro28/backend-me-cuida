@@ -1,0 +1,12 @@
+{% extends "patient_list.html" %}
+
+{% block back %}href='{% url "list_patient" %}'{% endblock back %}
+
+{% block patient %}
+    Deletar Paciente</h3>
+    <form method="post">
+        {% csrf_token %}
+        Você tem certeza que quer deletar {{ object.name }}?
+        <button type="submit">Sim</button>
+    </form>
+{% endblock patient %}

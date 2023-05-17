@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h3><i class="material-icons"><a {% block back %}href='{% url "home" %}'{% endblock back %}>arrow_back</a></i>{{ usertype }} {{ user.username }}<i class="material-icons"><a href='{% url "update" %}'>settings</a></i></h3>
+    {% if profile %}
+    Nome: {{ profile.name }} ({% if profile.specialty %}{{ profile.get_specialty_display }}{% if profile.admin %} - Administrador{% endif %}{% else %}Paciente{% endif %})<br>
+    CPF: {{ profile.cpf }}<br>
+    {% if profile.documenttype %}{{ profile.documenttype }}: {{ profile.documentnumber }}<br>{% endif %}
+    {% endif %}
+    Usuário: {{ user.username }}<br>
+    E-Mail: {{ user.email }}
+{% endblock content %}

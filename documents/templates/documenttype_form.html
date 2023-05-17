@@ -1,0 +1,12 @@
+{% extends "documenttype_list.html" %}
+
+{% block back %}href='{% url "list_documenttype" %}'{% endblock back %}
+
+{% block document %}
+    Registrar Tipo de Documento </h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Registrar</button>
+    </form>
+{% endblock document %}

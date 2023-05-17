@@ -1,0 +1,18 @@
+{% extends "patient_list.html" %}
+
+{% block back %}href='{% url "list_patient" %}'{% endblock back %}
+
+{% block patient %}
+    {{ object.name }} <i class="material-icons"><a href='{% url "update_patient" object.slug %}'>settings</a></i></h3>
+    CPF {{ object.cpf }}
+    <br>
+    <br>
+    <h5>Atividades</h5>
+    <ul class="list-group list-group-flush bg-transparent w-25">
+        {% for activity in activities %}
+            <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                ({{ activity.date }}){{ activity.get_activitytype_display }}{% if activity.description %} - {{ activity.description }}{% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock patient %}
